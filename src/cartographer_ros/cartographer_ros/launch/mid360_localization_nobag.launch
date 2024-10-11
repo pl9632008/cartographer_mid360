@@ -44,18 +44,15 @@
   <node name="rviz" pkg="rviz" type="rviz" required="true"
       args="-d $(find cartographer_ros)/configuration_files/demo_2d.rviz" />
 
-  <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="odom2base" 
-    args="0 0 0 0 0 0 odom base_link" />
-  <node pkg="tf2_ros" type="static_transform_publisher" name="base2lidar" 
-    args="0 0 0 0 0 0 base_link lidar_link" />
-  <node pkg="tf2_ros" type="static_transform_publisher" name="base2imu" 
-    args="0 0 0 0 0 0 base_link imu_link" /> -->
 
-  <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="lidar2livox_frame" 
-    args="0 0 0 0 0 3.14 lidar_link livox_frame" /> -->
 
   <node pkg="tf2_ros" type="static_transform_publisher" name="imu2livox_frame" 
     args="0 0 0 0 0 3.14 imu_link livox_frame" />
+
+
+  <node pkg="tf2_ros" type="static_transform_publisher" name="map2map_temp" 
+    args="0 0 0 1.5707 0 3.14 map map_temp" />
+  <node pkg="cleaning_robot" type="transform" name="trans"/>
 
 
 </launch>
