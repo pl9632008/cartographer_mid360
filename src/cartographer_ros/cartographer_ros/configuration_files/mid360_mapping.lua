@@ -10,7 +10,7 @@ options = {
   odom_frame = "odom",                      -- 里程计的坐标系名字
   provide_odom_frame = true,                -- 是否提供odom的tf, 如果为true, 则tf树为map->odom->footprint
                                             -- 如果为false tf树为map->footprint
-  publish_frame_projected_to_2d = false,    -- 是否将坐标系投影到平面上
+  publish_frame_projected_to_2d = true,    -- 是否将坐标系投影到平面上
   use_pose_extrapolator = false,            -- 发布tf时是使用pose_extrapolator的位姿还是前端计算出来的位姿
   use_odometry = false,                     -- 是否使用里程计,如果使用要求一定要有odom的tf
   use_nav_sat = false,                      -- 是否使用gps
@@ -38,7 +38,7 @@ MAP_BUILDER.use_trajectory_builder_2d = true
 TRAJECTORY_BUILDER_2D.use_imu_data = true
 TRAJECTORY_BUILDER_2D.min_range = 0.3
 TRAJECTORY_BUILDER_2D.max_range = 100.
-TRAJECTORY_BUILDER_2D.min_z = 0.2
+TRAJECTORY_BUILDER_2D.min_z = -0.5
 --TRAJECTORY_BUILDER_2D.max_z = 1.4
 --TRAJECTORY_BUILDER_2D.voxel_filter_size = 0.02
 

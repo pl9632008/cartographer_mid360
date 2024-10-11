@@ -5,6 +5,11 @@
   <material name="gray">
     <color rgba="0.2 0.2 0.2 1" />
   </material>
+
+  <material name="green">
+    <color rgba="0.0 1.0 0.0 1" />
+  </material>
+ 
  
   <link name="imu_link">
     <visual>
@@ -26,17 +31,27 @@
     </visual>
   </link>
 
-  <link name="base_link" />
+  <link name="base_link">
+
+     <visual>
+      <origin xyz="0.0 0.0 0.0" />
+      <geometry>
+        <box size="1.52 0.98 1.4" />
+      </geometry>
+      <material name="green" />
+    </visual>
+
+  </link>
  
   <joint name="imu_link_joint" type="fixed">
     <parent link="base_link" />
     <child link="imu_link" />
-    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+    <origin xyz="0.76 0.49 0.7" rpy="0 0 0.78" />
   </joint>
  
   <joint name="lidar_link_joint" type="fixed">
     <parent link="base_link" />
     <child link="lidar_link" />
-    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+    <origin xyz="0.76 0.49 0.7" rpy="0 0 0.78" />
   </joint>
 </robot>

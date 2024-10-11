@@ -1,6 +1,6 @@
 <launch>
 
-  <param name="/use_sim_time" value="true" /> <!-- true: offline (rosbag); false: online -->
+  <param name="/use_sim_time" value="false" /> <!-- true: offline (rosbag); false: online -->
   <param name="robot_description" textfile="$(find cartographer_ros)/urdf/mid360.urdf" />
 
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
@@ -33,6 +33,8 @@
   <param name="/set_inital_pose_ow" type="double" value = "0.73"/>
 
 
+
+
   <node name="cartographer_occupancy_grid_node" pkg="cartographer_ros"
     type="cartographer_occupancy_grid_node" args="-resolution 0.075 -pure_localization 1"/>
     
@@ -55,6 +57,5 @@
   <node pkg="tf2_ros" type="static_transform_publisher" name="imu2livox_frame" 
     args="0 0 0 0 0 3.14 imu_link livox_frame" />
 
-  <node name="playbag" pkg="rosbag" type="play" args="--clock $(arg bag_filename)" />
 
 </launch>
