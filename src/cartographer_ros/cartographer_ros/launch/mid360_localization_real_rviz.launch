@@ -1,5 +1,10 @@
 <launch>
 
+
+  <include file="$(find livox_ros_driver2)/launch_ROS1/no_rviz_MID360.launch">
+  </include>
+
+
   <param name="/use_sim_time" value="false" /> <!-- true: offline (rosbag); false: online -->
   <param name="robot_description" textfile="$(find cartographer_ros)/urdf/mid360.urdf" />
 
@@ -21,9 +26,10 @@
 
 <!--0: 建图的初始位置作为导航的零点
     1：设置参数服务器参数作为导航的零点
-    2：rviz设置初始位置作为导航的零点
--->
-  <param name="/use_localization" type="int" value = "1"/>
+    2：rviz设置初始位置作为导航的零点-->
+
+    
+  <param name="/use_localization" type="int" value = "2"/>
   <param name="/set_inital_pose_x" type="double" value = "-7.4"/>
   <param name="/set_inital_pose_y" type="double" value = "1.7"/>
   <param name="/set_inital_pose_z" type="double" value = "0.0"/>

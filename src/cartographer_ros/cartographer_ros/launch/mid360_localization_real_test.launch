@@ -28,13 +28,13 @@
     2：rviz设置初始位置作为导航的零点
 -->
   <param name="/use_localization" type="int" value = "1"/>
-  <param name="/set_inital_pose_x" type="double" value = "-11"/>
-  <param name="/set_inital_pose_y" type="double" value = "-11.6"/>
+  <param name="/set_inital_pose_x" type="double" value = "0.0"/>
+  <param name="/set_inital_pose_y" type="double" value = "0.0"/>
   <param name="/set_inital_pose_z" type="double" value = "0.0"/>
   <param name="/set_inital_pose_ox" type="double" value = "0.0"/>
   <param name="/set_inital_pose_oy" type="double" value = "0.0"/>
-  <param name="/set_inital_pose_oz" type="double" value = "0.55"/>
-  <param name="/set_inital_pose_ow" type="double" value = "0.83"/>
+  <param name="/set_inital_pose_oz" type="double" value = "0.0"/>
+  <param name="/set_inital_pose_ow" type="double" value = "1.0"/>
 
 
 
@@ -57,11 +57,6 @@
   <node pkg="tf2_ros" type="static_transform_publisher" name="map2map_temp" 
     args="0 0 0 1.5707 0 3.14 map map_temp" />
   <node pkg="cleaning_robot" type="transform" name="trans"/>
-
-
-
-	<!-- <node name = "map_server" pkg = "map_server" type = "map_server" args="/home/nvidia/wjd/testmaps/carto_map.yaml map:=/map" >
-	</node> -->
 
 
 
