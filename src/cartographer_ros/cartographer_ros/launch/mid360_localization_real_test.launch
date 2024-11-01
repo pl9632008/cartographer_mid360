@@ -28,13 +28,13 @@
     2：rviz设置初始位置作为导航的零点
 -->
   <param name="/use_localization" type="int" value = "1"/>
-  <param name="/set_inital_pose_x" type="double" value = "0.0"/>
-  <param name="/set_inital_pose_y" type="double" value = "0.0"/>
+  <param name="/set_inital_pose_x" type="double" value = "-1.21"/>
+  <param name="/set_inital_pose_y" type="double" value = "-4.26"/>
   <param name="/set_inital_pose_z" type="double" value = "0.0"/>
   <param name="/set_inital_pose_ox" type="double" value = "0.0"/>
   <param name="/set_inital_pose_oy" type="double" value = "0.0"/>
-  <param name="/set_inital_pose_oz" type="double" value = "0.0"/>
-  <param name="/set_inital_pose_ow" type="double" value = "1.0"/>
+  <param name="/set_inital_pose_oz" type="double" value = "-0.02"/>
+  <param name="/set_inital_pose_ow" type="double" value = "0.99"/>
 
 
 
