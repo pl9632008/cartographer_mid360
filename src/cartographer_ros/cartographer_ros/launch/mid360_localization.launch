@@ -71,7 +71,7 @@
 
 
   <node pkg="tf2_ros" type="static_transform_publisher" name="lidar2lidar" 
-    args="-1.8816 -0.388643 -0.014 3.13268 0.0496 0.01578 livox_frame192_168_1_196 livox_frame192_168_1_153" />
+    args="-1.8816 -0.388643 -0.014 3.13268 0.0496 0.01578 livox_frame_192_168_1_196 livox_frame_192_168_1_153" />
 
 
 </launch>
