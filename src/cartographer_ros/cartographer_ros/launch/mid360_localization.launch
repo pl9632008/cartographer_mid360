@@ -55,11 +55,8 @@
       args="-d $(find cartographer_ros)/configuration_files/demo_2d.rviz" />
 
 
-  <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="lidar2livox_frame" 
-    args="0 0 0 0 0 3.14 lidar_link livox_frame" /> -->
-
   <node pkg="tf2_ros" type="static_transform_publisher" name="imu2livox_frame" 
-    args="0 0 0 0 0 3.14 imu_link livox_frame" />
+    args="0 0 0 0 0 3.14 imu_link livox_frame_192_168_1_196" />
 
  <node pkg="tf2_ros" type="static_transform_publisher" name="map2map_temp" 
     args="0 0 0 1.5707 0 3.14 map map_temp" />

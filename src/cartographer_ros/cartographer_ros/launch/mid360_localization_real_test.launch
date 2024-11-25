@@ -1,6 +1,6 @@
 <launch>
 
-  <include file="$(find livox_ros_driver2)/launch_ROS1/no_rviz_MID360.launch">
+  <include file="$(find livox_ros_driver2)/launch_ROS1/no_rviz_MID3602.launch">
   </include>
 
 
@@ -53,7 +53,7 @@
 
 
   <node pkg="tf2_ros" type="static_transform_publisher" name="imu2livox_frame" 
-    args="0 0 0 0 0 3.14 imu_link livox_frame" />
+    args="0 0 0 0 0 3.14 imu_link livox_frame_192_168_1_196" />
 
 
   <node pkg="tf2_ros" type="static_transform_publisher" name="map2map_temp" 
