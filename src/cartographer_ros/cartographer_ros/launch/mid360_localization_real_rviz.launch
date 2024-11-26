@@ -2,8 +2,7 @@
 
 
   <include file="$(find livox_ros_driver2)/launch_ROS1/no_rviz_MID3602.launch">
-  </include>
-
+  <include file="$(find cleaning_robot)/launch/pub_merged_points.launch"/>
 
   <param name="/use_sim_time" value="false" /> <!-- true: offline (rosbag); false: online -->
   <param name="robot_description" textfile="$(find cartographer_ros)/urdf/mid360.urdf" />
@@ -18,9 +17,8 @@
 
     <remap from="scan" to="front_scan" />
     <remap from="odom" to="odom" />
-    <remap from="points2_1" to="livox/lidar_192_168_1_196"/>
-    <remap from="points2_2" to="livox/lidar_192_168_1_153"/>
-    <remap from="imu" to="livox/lidar_192_168_1_196" />
+    <remap from="points2" to="points_calibrated"/>
+    <remap from="imu" to="livox/imu_192_168_1_196" />
 
   </node>
 
@@ -62,8 +60,6 @@
   <node pkg="cleaning_robot" type="transform" name="trans"/>
 
 
-  <node pkg="tf2_ros" type="static_transform_publisher" name="lidar2lidar" 
-    args="-1.8816 -0.388643 -0.014 3.13268 0.0496 0.01578 livox_frame_192_168_1_196 livox_frame_192_168_1_153" />
 
 
 </launch>

@@ -3,6 +3,9 @@
   <param name="/use_sim_time" value="true" /> <!-- true: offline (rosbag); false: online -->
   <param name="robot_description" textfile="$(find cartographer_ros)/urdf/mid360.urdf" />
   
+  <include file="$(find cleaning_robot)/launch/pub_merged_points.launch"/>
+
+
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
 
   <node name="cartographer_node" pkg="cartographer_ros" type="cartographer_node" 
@@ -12,9 +15,8 @@
 
     <remap from="scan" to="front_scan" />
     <remap from="odom" to="odom" />
-    <remap from="points2_1" to="livox/lidar_192_168_1_196"/>
-    <remap from="points2_2" to="livox/lidar_192_168_1_153"/>
-    <remap from="imu" to="livox/lidar_192_168_1_196" />
+    <remap from="points2" to="points_calibrated"/>
+    <remap from="imu" to="livox/imu_192_168_1_196" />
 
   </node>
 
@@ -37,8 +39,7 @@
   <node name="playbag" pkg="rosbag" type="play" args="--clock $(arg bag_filename)" />
 
 
-  <node pkg="tf2_ros" type="static_transform_publisher" name="lidar2lidar" 
-    args="-1.8816 -0.388643 -0.014 3.13268 0.0496 0.01578 livox_frame_192_168_1_196 livox_frame_192_168_1_153" />
+
 
 
 </launch>
