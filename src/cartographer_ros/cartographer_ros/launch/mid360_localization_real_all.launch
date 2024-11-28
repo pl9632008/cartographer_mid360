@@ -2,7 +2,7 @@
 
   <include file="$(find livox_ros_driver2)/launch_ROS1/no_rviz_MID3602.launch"/>
   <include file="$(find cleaning_robot)/launch/pub_merged_points.launch"/>
-  <include file="$(find cleaning_robot)/launch/mid360_movebase_real.launch.launch"/>
+  <include file="$(find cleaning_robot)/launch/mid360_movebase_real.launch"/>
   <include file="$(find cleaning_robot)/launch/single.launch"/>
 
 

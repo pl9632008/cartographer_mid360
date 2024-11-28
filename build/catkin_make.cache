@@ -1,0 +1,2 @@
+cartographer:cartographer_ros/cartographer_ros:cartographer_ros/cartographer_ros_msgs:cartographer_ros/cartographer_rviz
+-DCATKIN_DEVEL_PREFIX=/home/nvidia/wjd/cartographer_mid360/devel -DCMAKE_INSTALL_PREFIX=/home/nvidia/wjd/cartographer_mid360/install -G Unix Makefiles
