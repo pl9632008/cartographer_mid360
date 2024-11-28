@@ -2,6 +2,9 @@
 
   <include file="$(find livox_ros_driver2)/launch_ROS1/no_rviz_MID3602.launch"/>
   <include file="$(find cleaning_robot)/launch/pub_merged_points.launch"/>
+  <include file="$(find cleaning_robot)/launch/mid360_movebase_real.launch.launch"/>
+  <include file="$(find cleaning_robot)/launch/single.launch"/>
+
 
   <param name="/use_sim_time" value="false" /> <!-- true: offline (rosbag); false: online -->
   <param name="robot_description" textfile="$(find cartographer_ros)/urdf/mid360.urdf" />
@@ -49,7 +52,6 @@
       args="-d $(find cartographer_ros)/configuration_files/demo_2d.rviz" />
 
 
-
   <node pkg="tf2_ros" type="static_transform_publisher" name="imu2livox_frame" 
     args="0 0 0 0 0 3.14 imu_link livox_frame_192_168_1_196" />
 
@@ -59,8 +61,6 @@
   <node pkg="cleaning_robot" type="transform" name="trans"/>
 
   
-
-
 
 
 </launch>
