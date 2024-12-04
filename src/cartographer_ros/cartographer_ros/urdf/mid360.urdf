@@ -34,9 +34,9 @@
   <link name="base_link">
 
      <visual>
-      <origin xyz="0.46 0.0 0.0" />
+      <origin xyz="0.529265 0.0 0.0" />
       <geometry>
-        <box size="1.52 0.98 1.4" />
+        <box size="1.61 1.0266 1.4265" />
       </geometry>
       <material name="green" />
     </visual>
@@ -46,12 +46,12 @@
   <joint name="imu_link_joint" type="fixed">
     <parent link="base_link" />
     <child link="imu_link" />
-    <origin xyz="1.22 0.49 0.6" rpy="0 0 0.78" />
+    <origin xyz="1.334265 0.5133 0.61995" rpy="0 0 0.785398" />
   </joint>
  
   <joint name="lidar_link_joint" type="fixed">
     <parent link="base_link" />
     <child link="lidar_link" />
-    <origin xyz="1.22 0.49 0.6" rpy="0 0 0.78" />
+    <origin xyz="1.334265 0.5133 0.61995" rpy="0 0 0.785398" />
   </joint>
 </robot>
