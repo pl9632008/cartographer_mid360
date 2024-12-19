@@ -39,7 +39,7 @@ TRAJECTORY_BUILDER_2D.use_imu_data = false
 TRAJECTORY_BUILDER_2D.min_range = 0.01 -- 0.3
 TRAJECTORY_BUILDER_2D.max_range = 30.
 TRAJECTORY_BUILDER_2D.min_z = -0.55
---TRAJECTORY_BUILDER_2D.max_z = 1.4
+TRAJECTORY_BUILDER_2D.max_z = 1.4
 --TRAJECTORY_BUILDER_2D.voxel_filter_size = 0.02
 
 --TRAJECTORY_BUILDER_2D.adaptive_voxel_filter.max_length = 0.5
