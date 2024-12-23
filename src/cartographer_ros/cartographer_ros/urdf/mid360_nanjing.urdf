@@ -46,12 +46,12 @@
   <joint name="imu_link_joint" type="fixed">
     <parent link="base_link" />
     <child link="imu_link" />
-    <origin xyz="1.29753 0.5133 0.57482" rpy="0 0 0.785398" />
+    <origin xyz="1.31753 0.5333 0.57482" rpy="0 0 0.785398" />
   </joint>
  
   <joint name="lidar_link_joint" type="fixed">
     <parent link="base_link" />
     <child link="lidar_link" />
-    <origin xyz="1.29753 0.5133 0.57482" rpy="0 0 0.785398" />
+    <origin xyz="1.31753 0.5333 0.57482" rpy="0 0 0.785398" />
   </joint>
 </robot>
