@@ -362,9 +362,9 @@ void Node::PublishLocalTrajectoryData(const ::ros::TimerEvent& timer_event) {
             msg.child_frame_id = "base_link";
             msg.pose.pose.position = pose_msg.pose.position;
             msg.pose.pose.orientation = pose_msg.pose.orientation;
-            msg.twist.twist.linear.x = lin_speed_x;
-            msg.twist.twist.linear.y = lin_speed_y;
-            msg.twist.twist.angular.z = ang_speed;
+            // msg.twist.twist.linear.x = lin_speed_x;
+            // msg.twist.twist.linear.y = lin_speed_y;
+            // msg.twist.twist.angular.z = ang_speed;
             carto_pub_.publish(msg);
 
         }
