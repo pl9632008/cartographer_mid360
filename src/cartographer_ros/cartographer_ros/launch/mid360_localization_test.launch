@@ -1,6 +1,6 @@
 <launch>
 
-  <param name="/use_sim_time" value="false" /> <!-- true: offline (rosbag); false: online -->
+  <param name="/use_sim_time" value="true" /> <!-- true: offline (rosbag); false: online -->
   <param name="robot_description" textfile="$(find cartographer_ros)/urdf/mid360_nanjing.urdf" />
 
   <include file="$(find cleaning_robot)/launch/pub_merged_points.launch"/>
@@ -64,5 +64,6 @@
     args="0 0 0 1.5707 0 3.14 map map_temp" />
   <node pkg="cleaning_robot" type="transform" name="trans"/>
 
+  <node name="playbag" pkg="rosbag" type="play" args="--clock $(arg bag_filename)" />
 
 </launch>
