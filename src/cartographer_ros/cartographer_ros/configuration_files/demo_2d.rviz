@@ -446,6 +446,15 @@ Visualization Manager:
       Topic: /edge_path_topic
       Unreliable: false
       Value: true
+    - Alpha: 1
+      Class: rviz/Polygon
+      Color: 25; 255; 0
+      Enabled: true
+      Name: Polygon
+      Queue Size: 10
+      Topic: /polygon_topic
+      Unreliable: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 100; 100; 100
@@ -474,7 +483,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 33.164085388183594
+      Distance: 44.65203857421875
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -482,9 +491,9 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 0.4277670383453369
-        Y: -11.092124938964844
-        Z: -8.369354873138946e-06
+        X: 5.374561786651611
+        Y: -13.72170639038086
+        Z: -3.252910391893238e-05
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
@@ -492,7 +501,7 @@ Visualization Manager:
       Near Clip Distance: 0.009999999776482582
       Pitch: 1.5697963237762451
       Target Frame: <Fixed Frame>
-      Yaw: 4.70997428894043
+      Yaw: 4.734990119934082
     Saved: ~
 Window Geometry:
   Displays:
@@ -511,4 +520,4 @@ Window Geometry:
     collapsed: true
   Width: 1386
   X: 303
-  Y: 114
+  Y: 77
