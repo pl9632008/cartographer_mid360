@@ -38,7 +38,7 @@ MAP_BUILDER.use_trajectory_builder_2d = true
 
 TRAJECTORY_BUILDER_2D.use_imu_data = false
 TRAJECTORY_BUILDER_2D.min_range = 0.01 -- 0.3
-TRAJECTORY_BUILDER_2D.max_range = 45.
+TRAJECTORY_BUILDER_2D.max_range = 30.
 TRAJECTORY_BUILDER_2D.min_z = 0.05
 TRAJECTORY_BUILDER_2D.max_z = 1.3
 --TRAJECTORY_BUILDER_2D.voxel_filter_size = 0.02
@@ -61,13 +61,13 @@ TRAJECTORY_BUILDER_2D.ceres_scan_matcher.rotation_weight = 1.
 --TRAJECTORY_BUILDER_2D.motion_filter.max_angle_radians = 0.004
 --TRAJECTORY_BUILDER_2D.imu_gravity_time_constant = 1.
 
-TRAJECTORY_BUILDER_2D.submaps.num_range_data = 120.                   --80
-TRAJECTORY_BUILDER_2D.submaps.grid_options_2d.resolution = 0.075       --0.1  
+TRAJECTORY_BUILDER_2D.submaps.num_range_data = 80.                   --80
+TRAJECTORY_BUILDER_2D.submaps.grid_options_2d.resolution = 0.1       --0.1  
 
 POSE_GRAPH.optimize_every_n_nodes = 160.                 
-POSE_GRAPH.constraint_builder.sampling_ratio = 0.03          --0.3
-POSE_GRAPH.constraint_builder.max_constraint_distance = 10.  --15.0
-POSE_GRAPH.constraint_builder.min_score = 0.62  --0.48
-POSE_GRAPH.constraint_builder.global_localization_min_score = 0.66 --0.60
+POSE_GRAPH.constraint_builder.sampling_ratio = 0.3          --0.3
+POSE_GRAPH.constraint_builder.max_constraint_distance = 15.  --15.0
+POSE_GRAPH.constraint_builder.min_score = 0.48  --0.48
+POSE_GRAPH.constraint_builder.global_localization_min_score = 0.6 --0.60
 
 return options
