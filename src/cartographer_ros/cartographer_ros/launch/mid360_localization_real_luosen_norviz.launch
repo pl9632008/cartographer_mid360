@@ -45,8 +45,8 @@
   <node name="map_server" pkg="map_server" type="map_server"
     args="/home/nvidia/wjd/testmaps2/carto_map2.yaml" />
 
-  <node name="rviz" pkg="rviz" type="rviz" required="true"
-      args="-d $(find cartographer_ros)/configuration_files/demo_2d.rviz" />
+  <!-- <node name="rviz" pkg="rviz" type="rviz" required="true"
+      args="-d $(find cartographer_ros)/configuration_files/demo_2d.rviz" /> -->
 
 
 
