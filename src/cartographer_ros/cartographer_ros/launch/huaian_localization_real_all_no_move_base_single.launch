@@ -11,7 +11,7 @@
   <node name="cartographer_node" pkg="cartographer_ros" type="cartographer_node" 
     args="-configuration_directory $(find cartographer_ros)/configuration_files
           -configuration_basename mid360_localization_huaian.lua
-          -load_state_filename /home/nvidia/wjd/testmaps3/carto_map.pbstream"
+          -load_state_filename /home/nvidia/wjd/testmaps4/carto_map.pbstream"
     output="screen">
 
     <remap from="scan" to="front_scan" />

@@ -5,7 +5,7 @@ options = {
   map_builder = MAP_BUILDER,                -- map_builder.lua的配置信息
   trajectory_builder = TRAJECTORY_BUILDER,  -- trajectory_builder.lua的配置信息
   map_frame = "map",                        -- 地图坐标系的名字
-  tracking_frame = "base_link",             -- 将所有传感器数据转换到这个坐标系下 有imu_link就用imu_link
+  tracking_frame = "imu_link",             -- 将所有传感器数据转换到这个坐标系下 有imu_link就用imu_link
   published_frame = "base_link",            -- tf: map -> footprint
   odom_frame = "odom",                      -- 里程计的坐标系名字
   provide_odom_frame = true,                -- 是否提供odom的tf, 如果为true, 则tf树为map->odom->footprint
@@ -36,11 +36,13 @@ MAP_BUILDER.num_background_threads = 8
 MAP_BUILDER.use_trajectory_builder_2d = true
 
 
-TRAJECTORY_BUILDER_2D.use_imu_data = false
+TRAJECTORY_BUILDER_2D.use_imu_data = true
 TRAJECTORY_BUILDER_2D.min_range = 0.01 -- 0.3
-TRAJECTORY_BUILDER_2D.max_range = 30.
+TRAJECTORY_BUILDER_2D.max_range = 15.
 TRAJECTORY_BUILDER_2D.min_z = 0.05
-TRAJECTORY_BUILDER_2D.max_z = 1.1
+TRAJECTORY_BUILDER_2D.max_z = 0.9
+
+
 --TRAJECTORY_BUILDER_2D.voxel_filter_size = 0.02
 
 --TRAJECTORY_BUILDER_2D.adaptive_voxel_filter.max_length = 0.5
@@ -69,5 +71,17 @@ POSE_GRAPH.constraint_builder.sampling_ratio = 0.3
 POSE_GRAPH.constraint_builder.max_constraint_distance = 15.
 POSE_GRAPH.constraint_builder.min_score = 0.48
 POSE_GRAPH.constraint_builder.global_localization_min_score = 0.60
+
+
+
+-- TRAJECTORY_BUILDER_3D.num_accumulated_range_data = 160
+-- POSE_GRAPH.optimization_problem.huber_scale = 5e2
+-- POSE_GRAPH.optimize_every_n_nodes = 320
+-- POSE_GRAPH.constraint_builder.sampling_ratio = 0.03
+-- POSE_GRAPH.optimization_problem.ceres_solver_options.max_num_iterations = 10
+-- POSE_GRAPH.constraint_builder.min_score = 0.62
+-- POSE_GRAPH.constraint_builder.global_localization_min_score = 0.66
+
+
 
 return options
