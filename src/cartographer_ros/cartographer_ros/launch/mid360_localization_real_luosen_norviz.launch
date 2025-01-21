@@ -59,6 +59,7 @@
   <node pkg="cleaning_robot" type="transform" name="trans"/>
 
   
+ <node pkg="cleaning_robot" type="transform2" name="trans2"/>
 
 
 
