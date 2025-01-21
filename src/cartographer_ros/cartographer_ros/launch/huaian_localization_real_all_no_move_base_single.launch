@@ -41,7 +41,7 @@
     type="cartographer_occupancy_grid_node" args="-resolution 0.075 -pure_localization 1"/>
     
   <node name="map_server" pkg="map_server" type="map_server"
-    args="/home/nvidia/wjd/testmaps3/carto_map.yaml" />
+    args="/home/nvidia/wjd/testmaps4/carto_map.yaml" />
 
   <node name="rviz" pkg="rviz" type="rviz" required="true"
       args="-d $(find cartographer_ros)/configuration_files/demo_2d.rviz" />
