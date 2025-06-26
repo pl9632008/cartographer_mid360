@@ -21,7 +21,7 @@
     <remap from="scan" to="front_scan" />
     <remap from="odom" to="odom" />
     <remap from="points2" to="points_calibrated"/>
-    <remap from="imu" to="imu_standard" />
+    <remap from="imu" to="livox/imu_192_168_1_196" />
 
   </node>
 
