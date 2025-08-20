@@ -26,7 +26,7 @@
     1：设置参数服务器参数作为导航的零点
     2：rviz设置初始位置作为导航的零点
 -->
-  <param name="/use_localization" type="int" value = "1"/>
+  <param name="/use_localization" type="int" value = "0"/>
   <param name="/set_inital_pose_x" type="double" value = "-1.21"/>
   <param name="/set_inital_pose_y" type="double" value = "-4.26"/>
   <param name="/set_inital_pose_z" type="double" value = "0.0"/>
@@ -40,7 +40,7 @@
 
 
   <node name="cartographer_occupancy_grid_node" pkg="cartographer_ros"
-    type="cartographer_occupancy_grid_node" args="-resolution 0.075 -pure_localization 1"/>
+    type="cartographer_occupancy_grid_node" args="-resolution 0.05 -pure_localization 1"/>
     
   <node name="map_server" pkg="map_server" type="map_server"
     args="/home/nvidia/wjd/testmaps/carto_map.yaml" />
@@ -54,11 +54,21 @@
     args="0 0 0 0 0 3.14 imu_link livox_frame_192_168_1_196" />
 
 
-  <node pkg="tf2_ros" type="static_transform_publisher" name="map2map_temp" 
+ <node pkg="tf2_ros" type="static_transform_publisher" name="lidar2lidar_fore" 
+    args="0 0 0 -0.785398 0 0 lidar_link lidar_fore" />
+
+
+
+  <node pkg="tf2_ros" type="static_transform_publisher" name="lidar_fore2gps"
+   args="-0.18 -0.51 0.18 0 0 0  lidar_fore  gps" />
+
+
+
+  <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="map2map_temp" 
     args="0 0 0 1.5707 0 3.14 map map_temp" />
   <node pkg="cleaning_robot" type="transform" name="trans"/>
 
-   <node pkg="cleaning_robot" type="transform2" name="trans2"/>
+   <node pkg="cleaning_robot" type="transform2" name="trans2"/> -->
 
 
 
