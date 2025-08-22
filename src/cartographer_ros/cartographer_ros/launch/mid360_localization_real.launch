@@ -1,7 +1,18 @@
 <launch>
 
+
+  
   <include file="$(find livox_ros_driver2)/launch_ROS1/no_rviz_MID3602.launch"/>
+
   <include file="$(find cleaning_robot)/launch/pub_merged_points.launch"/>
+
+  <include file="$(find cleaning_robot)/launch/test_pub_imu.launch"/>
+
+  <include file="$(find nmea_navsat_driver)/launch/read_serial_pub_utm.launch"/>
+  
+  <include file="$(find robot_localization)/launch/ekf_template.launch"/>  
+
+
 
   <param name="/use_sim_time" value="false" /> <!-- true: offline (rosbag); false: online -->
   <param name="robot_description" textfile="$(find cartographer_ros)/urdf/mid360_nanjing.urdf" />
@@ -15,9 +26,9 @@
     output="screen">
 
     <remap from="scan" to="front_scan" />
-    <remap from="odom" to="odom" />
+    <remap from="odom" to="odometry/filtered_test" />
     <remap from="points2" to="points_calibrated"/>
-    <remap from="imu" to="livox/imu_192_168_1_196" />
+    <remap from="imu" to="imu_standard_153" />
 
   </node>
 
@@ -49,26 +60,19 @@
       args="-d $(find cartographer_ros)/configuration_files/demo_2d.rviz" />
 
 
-
-  <node pkg="tf2_ros" type="static_transform_publisher" name="imu2livox_frame" 
-    args="0 0 0 0 0 3.14 imu_link livox_frame_192_168_1_196" />
-
-
- <node pkg="tf2_ros" type="static_transform_publisher" name="lidar2lidar_fore" 
-    args="0 0 0 -0.785398 0 0 lidar_link lidar_fore" />
+   <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="imu2livox_frame" 
+    args="0 0 0 0 0 3.1415926 imu_link livox_frame_192_168_1_196" /> -->
 
 
-
-  <node pkg="tf2_ros" type="static_transform_publisher" name="lidar_fore2gps"
-   args="-0.18 -0.51 0.18 0 0 0  lidar_fore  gps" />
-
+ <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="lidar2lidar_fore" 
+    args="0 0 0 -0.785398 0 0 lidar_link lidar_fore" /> -->
 
 
-  <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="map2map_temp" 
-    args="0 0 0 1.5707 0 3.14 map map_temp" />
-  <node pkg="cleaning_robot" type="transform" name="trans"/>
+  <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="lidar_fore2gps"
+   args="-0.18 -0.51 0.18 0 0 0  lidar_fore  utm" /> -->
 
-   <node pkg="cleaning_robot" type="transform2" name="trans2"/> -->
+  <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="livox2livox" 
+  args="-1.87842 -0.434706 -0.00151078 3.12432 0.04232 0.000994 livox_frame_192_168_1_196 livox_frame_192_168_1_153" /> -->
 
 
 

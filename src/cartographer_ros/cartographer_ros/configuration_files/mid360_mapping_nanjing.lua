@@ -11,8 +11,8 @@ options = {
   provide_odom_frame = true,
   publish_frame_projected_to_2d = false,
   use_pose_extrapolator = false,
-  use_odometry = true,
-  use_nav_sat = false,
+  use_odometry = false,
+  use_nav_sat = true,
   use_landmarks = false,
   num_laser_scans = 0,
   num_multi_echo_laser_scans = 0,
@@ -36,10 +36,16 @@ MAP_BUILDER.use_trajectory_builder_2d = true
 
 
 TRAJECTORY_BUILDER_2D.use_imu_data = false
-TRAJECTORY_BUILDER_2D.min_range = 0.01 -- 0.3
+TRAJECTORY_BUILDER_2D.min_range = 0.1  -- 0.3
 TRAJECTORY_BUILDER_2D.max_range = 20
-TRAJECTORY_BUILDER_2D.min_z = 0.05
+
+TRAJECTORY_BUILDER_2D.min_z = -0.6
 TRAJECTORY_BUILDER_2D.max_z = 1.3
+
+-- IMU153
+-- TRAJECTORY_BUILDER_2D.min_z = -0.95
+-- TRAJECTORY_BUILDER_2D.max_z = 0.5
+
 
 -- --TRAJECTORY_BUILDER_2D.voxel_filter_size = 0.02
 
@@ -57,9 +63,9 @@ TRAJECTORY_BUILDER_2D.use_online_correlative_scan_matching = true
 -- TRAJECTORY_BUILDER_2D.ceres_scan_matcher.rotation_weight = 1.
 -- --TRAJECTORY_BUILDER_2D.ceres_scan_matcher.ceres_solver_options.max_num_iterations = 12
 
--- --TRAJECTORY_BUILDER_2D.motion_filter.max_distance_meters = 0.1
--- --TRAJECTORY_BUILDER_2D.motion_filter.max_angle_radians = 0.004
--- --TRAJECTORY_BUILDER_2D.imu_gravity_time_constant = 1.
+-- TRAJECTORY_BUILDER_2D.motion_filter.max_distance_meters = 0.1
+-- TRAJECTORY_BUILDER_2D.motion_filter.max_angle_radians = 0.004
+-- TRAJECTORY_BUILDER_2D.imu_gravity_time_constant = 1.
 
 -- TRAJECTORY_BUILDER_2D.submaps.num_range_data = 80.                   --80
 -- TRAJECTORY_BUILDER_2D.submaps.grid_options_2d.resolution = 0.1       --0.1  

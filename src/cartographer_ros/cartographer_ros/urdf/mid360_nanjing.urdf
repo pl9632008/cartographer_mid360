@@ -20,6 +20,10 @@
       <material name="orange" />
     </visual>
   </link>
+
+
+
+
  
   <link name="lidar_link">
     <visual>
@@ -54,4 +58,111 @@
     <child link="lidar_link" />
     <origin xyz="1.31753 0.5333 0.57482" rpy="0 0 0.785398" />
   </joint>
+
+
+
+
+ <link name="livox_frame_192_168_1_196">
+    <visual>
+      <origin xyz="0.0 0.0 0.0" />
+      <geometry>
+        <box size="0.06 0.04 0.02" />
+      </geometry>
+      <material name="orange" />
+    </visual>
+  </link>
+
+  
+  <joint name="livox_frame_192_168_1_196_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="livox_frame_192_168_1_196" />
+    <origin xyz="1.31753 0.5333 0.57482" rpy="3.1415926 0 0.785398" />
+  </joint>
+
+
+
+  <link name="lidar_fore">
+    <visual>
+      <origin xyz="0.0 0.0 0.0" />
+      <geometry>
+        <box size="0.06 0.04 0.02" />
+      </geometry>
+      <material name="orange" />
+    </visual>
+  </link>
+
+
+
+  <joint name="lidar_fore_joint" type="fixed">
+    <parent link="lidar_link" />
+    <child link="lidar_fore" />
+    <origin xyz="0 0 0" rpy="0 0 -0.785398" />
+  </joint>
+
+
+
+
+<link name="utm">
+    <visual>
+      <origin xyz="0.0 0.0 0.0" />
+      <geometry>
+        <box size="0.06 0.04 0.02" />
+      </geometry>
+      <material name="orange" />
+    </visual>
+  </link>
+
+
+
+  <joint name="utm_joint" type="fixed">
+    <parent link="lidar_fore" />
+    <child link="utm" />
+    <origin xyz="-0.18 -0.51 0.18" rpy="0 0 0" />
+  </joint>
+
+
+
+
+
+ <link name="livox_frame_192_168_1_153">
+    <visual>
+      <origin xyz="0.0 0.0 0.0" />
+      <geometry>
+        <box size="0.06 0.04 0.02" />
+      </geometry>
+      <material name="orange" />
+    </visual>
+  </link>
+
+
+
+  <joint name="livox_frame_192_168_1_153_joint" type="fixed">
+    <parent link="livox_frame_192_168_1_196" />
+    <child link="livox_frame_192_168_1_153" />
+    <origin xyz="-1.87842 -0.434706 -0.00151078" rpy=" 0.000994 0.04232 3.12432  " />
+  </joint>
+
+
+
+
+
+ <link name="fore_153">
+    <visual>
+      <origin xyz="0.0 0.0 0.0" />
+      <geometry>
+        <box size="0.06 0.04 0.02" />
+      </geometry>
+      <material name="orange" />
+    </visual>
+  </link>
+
+<joint name="fore_153_joint" type="fixed">
+    <parent link="livox_frame_192_168_1_153" />
+    <child link="fore_153" />
+    <origin xyz="0 0 0 " rpy=" 3.1415926 0 -2.3561944 " />
+  </joint>
+
+
+
+
 </robot>
