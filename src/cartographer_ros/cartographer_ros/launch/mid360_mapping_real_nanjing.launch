@@ -8,11 +8,11 @@
 
   <include file="$(find cleaning_robot)/launch/pub_merged_points.launch"/>
 
-  <include file="$(find cleaning_robot)/launch/test_pub_imu.launch"/>
+  <!-- <include file="$(find cleaning_robot)/launch/test_pub_imu.launch"/> -->
 
   <include file="$(find nmea_navsat_driver)/launch/read_serial_pub_utm.launch"/>
 
-  <include file="$(find robot_localization)/launch/ekf_template.launch"/>  
+  <!-- <include file="$(find robot_localization)/launch/ekf_template.launch"/>   -->
 
 
 
@@ -32,7 +32,7 @@
   </node>
 
   <node name="cartographer_occupancy_grid_node" pkg="cartographer_ros"
-    type="cartographer_occupancy_grid_node" args="-resolution 0.05" />
+    type="cartographer_occupancy_grid_node" args="-resolution 0.1" />
 
   <node name="rviz" pkg="rviz" type="rviz" required="true" 
     args="-d $(find cartographer_ros)/configuration_files/demo_2d.rviz" />
