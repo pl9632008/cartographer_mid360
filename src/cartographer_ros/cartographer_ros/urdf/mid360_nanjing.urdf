@@ -102,7 +102,7 @@
 
 
 
-<link name="utm">
+<link name="gps">
     <visual>
       <origin xyz="0.0 0.0 0.0" />
       <geometry>
@@ -114,9 +114,9 @@
 
 
 
-  <joint name="utm_joint" type="fixed">
+  <joint name="gps_joint" type="fixed">
     <parent link="lidar_fore" />
-    <child link="utm" />
+    <child link="gps" />
     <origin xyz="-0.18 -0.51 0.18" rpy="0 0 0" />
   </joint>
 
