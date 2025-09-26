@@ -48,8 +48,8 @@ TRAJECTORY_BUILDER_2D.ceres_scan_matcher.occupied_space_weight = 1
 TRAJECTORY_BUILDER_2D.ceres_scan_matcher.translation_weight = 1
 TRAJECTORY_BUILDER_2D.ceres_scan_matcher.rotation_weight = 1
 
-POSE_GRAPH.constraint_builder.min_score = 0.75
-POSE_GRAPH.constraint_builder.global_localization_min_score = 0.75
+-- POSE_GRAPH.constraint_builder.min_score = 0.65
+-- POSE_GRAPH.constraint_builder.global_localization_min_score = 0.7
 
 
 TRAJECTORY_BUILDER_2D.submaps.grid_options_2d.resolution = 0.1--default 0.05
