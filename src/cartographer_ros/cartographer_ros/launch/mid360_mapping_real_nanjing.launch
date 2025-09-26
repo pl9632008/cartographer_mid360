@@ -8,13 +8,7 @@
 
   <include file="$(find cleaning_robot)/launch/pub_merged_points.launch"/>
 
-  <!-- <include file="$(find cleaning_robot)/launch/test_pub_imu.launch"/> -->
-
   <include file="$(find nmea_navsat_driver)/launch/read_serial_pub_utm.launch"/>
-
-  <!-- <include file="$(find robot_localization)/launch/ekf_template.launch"/>   -->
-
-
 
 
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
@@ -37,24 +31,7 @@
   <node name="rviz" pkg="rviz" type="rviz" required="true" 
     args="-d $(find cartographer_ros)/configuration_files/demo_2d.rviz" />
 
-
-
-   <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="imu2livox_frame" 
-    args="0 0 0 0 0 3.1415926 imu_link livox_frame_192_168_1_196" /> -->
-
-
- <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="lidar2lidar_fore" 
-    args="0 0 0 -0.785398 0 0 lidar_link lidar_fore" /> -->
-
-
-  <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="lidar_fore2gps"
-   args="-0.18 -0.51 0.18 0 0 0  lidar_fore  utm" /> -->
-
-  <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="livox2livox" 
-  args="-1.87842 -0.434706 -0.00151078 3.12432 0.04232 0.000994 livox_frame_192_168_1_196 livox_frame_192_168_1_153" /> -->
-
-
-
+  <!-- <node pkg="cleaning_robot" type="transform" name="trans"/> -->
 
 
 </launch>
