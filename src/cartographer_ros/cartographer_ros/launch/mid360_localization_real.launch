@@ -30,9 +30,9 @@
 
 <!--0: 建图的初始位置作为导航的零点
     1：设置参数服务器参数作为导航的零点
-    2：rviz设置初始位置作为导航的零点
+    2：rviz设置初始位置作为导航的零点(本质是接收/initialpose这个topic，所以gnss初始定位也用2)
 -->
-   <param name="/use_localization" type="int" value = "0"/>
+  <param name="/use_localization" type="int" value = "0"/>
   <param name="/set_inital_pose_x" type="double" value = "-36.02"/>
   <param name="/set_inital_pose_y" type="double" value = "-54.57"/>
   <param name="/set_inital_pose_z" type="double" value = "0.0"/>
