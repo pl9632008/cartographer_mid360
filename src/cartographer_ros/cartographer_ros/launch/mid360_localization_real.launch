@@ -7,7 +7,7 @@
 
   <include file="$(find cleaning_robot)/launch/pub_merged_points.launch"/>
 
-  <include file="$(find nmea_navsat_driver)/launch/read_serial_pub_utm.launch"/>
+  <include file="$(find nmea_navsat_driver)/launch/nmea_serial_driver.launch"/>
 
 
   <param name="robot_description" textfile="$(find cartographer_ros)/urdf/mid360_nanjing.urdf" />
