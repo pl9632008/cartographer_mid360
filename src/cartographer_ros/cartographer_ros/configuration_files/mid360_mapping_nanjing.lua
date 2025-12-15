@@ -43,17 +43,33 @@ TRAJECTORY_BUILDER_2D.min_z = -0.5
 TRAJECTORY_BUILDER_2D.max_z = 0.5
 
 
+
+-- ┌─────────────────┬──────────┬──────────┬──────────┐
+-- │   参数          │  含义     │  增加时  │  减少时  │
+-- ├─────────────────┼──────────┼──────────┼──────────┤
+-- │ occupied_space  │ 激光匹配 │ 更信任   │ 更信任   │
+-- │ _weight         │ 重要性   │ 激光数据 │ IMU/Odom │
+-- ├─────────────────┼──────────┼──────────┼──────────┤
+-- │ translation     │ 位置偏离 │ 约束更强 │ 允许更大 │
+-- │ _weight         │ 惩罚     │ 不易跳跃 │ 移动范围 │
+-- ├─────────────────┼──────────┼──────────┼──────────┤
+-- │ rotation        │ 角度偏离 │ 约束更强 │ 允许更大 │
+-- │ _weight         │ 惩罚     │ 角度稳定 │ 角度调整 │
+-- └─────────────────┴──────────┴──────────┴──────────┘
+
+
 TRAJECTORY_BUILDER_2D.use_online_correlative_scan_matching = true
 TRAJECTORY_BUILDER_2D.ceres_scan_matcher.occupied_space_weight = 1
-TRAJECTORY_BUILDER_2D.ceres_scan_matcher.translation_weight = 1
-TRAJECTORY_BUILDER_2D.ceres_scan_matcher.rotation_weight = 1
+TRAJECTORY_BUILDER_2D.ceres_scan_matcher.translation_weight = 10
+TRAJECTORY_BUILDER_2D.ceres_scan_matcher.rotation_weight = 2
+
+TRAJECTORY_BUILDER_2D.submaps.grid_options_2d.resolution = 0.1--default 0.05
 
 POSE_GRAPH.constraint_builder.min_score = 0.6
 POSE_GRAPH.constraint_builder.global_localization_min_score = 0.65
 
-
-TRAJECTORY_BUILDER_2D.submaps.grid_options_2d.resolution = 0.1--default 0.05
-
+POSE_GRAPH.optimization_problem.fixed_frame_pose_translation_weight = 1e2-- GPS位置权重
+POSE_GRAPH.optimization_problem.fixed_frame_pose_rotation_weight = 0
 
 
 return options
