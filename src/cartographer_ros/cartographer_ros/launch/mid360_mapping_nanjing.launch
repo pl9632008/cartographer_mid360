@@ -3,6 +3,8 @@
   <param name="/use_sim_time" value="true" /> <!-- true: offline (rosbag); false: online -->
   <param name="robot_description" textfile="$(find cartographer_ros)/urdf/mid360_nanjing.urdf" />
 
+  <include file="$(find cleaning_robot)/launch/pub_merged_points.launch"/>
+
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
 
   <node name="cartographer_node" pkg="cartographer_ros" type="cartographer_node" 
