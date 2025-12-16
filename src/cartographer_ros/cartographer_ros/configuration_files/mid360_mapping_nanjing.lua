@@ -60,16 +60,16 @@ TRAJECTORY_BUILDER_2D.max_z = 0.5
 
 TRAJECTORY_BUILDER_2D.use_online_correlative_scan_matching = true
 TRAJECTORY_BUILDER_2D.ceres_scan_matcher.occupied_space_weight = 1
-TRAJECTORY_BUILDER_2D.ceres_scan_matcher.translation_weight = 10
-TRAJECTORY_BUILDER_2D.ceres_scan_matcher.rotation_weight = 2
+TRAJECTORY_BUILDER_2D.ceres_scan_matcher.translation_weight = 3
+TRAJECTORY_BUILDER_2D.ceres_scan_matcher.rotation_weight = 1
 
 TRAJECTORY_BUILDER_2D.submaps.grid_options_2d.resolution = 0.1--default 0.05
 
 POSE_GRAPH.constraint_builder.min_score = 0.6
 POSE_GRAPH.constraint_builder.global_localization_min_score = 0.65
 
-POSE_GRAPH.optimization_problem.fixed_frame_pose_translation_weight = 1e2-- GPS位置权重
-POSE_GRAPH.optimization_problem.fixed_frame_pose_rotation_weight = 0
+POSE_GRAPH.optimization_problem.fixed_frame_pose_translation_weight = 1e1-- GPS位置权重
+POSE_GRAPH.optimization_problem.fixed_frame_pose_rotation_weight = 1e2
 
 
 return options
