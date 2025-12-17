@@ -144,25 +144,4 @@
 
 
 
-
-
- <link name="fore_153">
-    <visual>
-      <origin xyz="0.0 0.0 0.0" />
-      <geometry>
-        <box size="0.06 0.04 0.02" />
-      </geometry>
-      <material name="orange" />
-    </visual>
-  </link>
-
-<joint name="fore_153_joint" type="fixed">
-    <parent link="livox_frame_192_168_1_153" />
-    <child link="fore_153" />
-    <origin xyz="0 0 0 " rpy=" 3.1415926 0 -2.3561944 " />
-  </joint>
-
-
-
-
 </robot>

@@ -7,7 +7,6 @@ TRAJECTORY_BUILDER.pure_localization_trimmer = {
 POSE_GRAPH.optimize_every_n_nodes = 20  
 
 
-
 return options
 
 
