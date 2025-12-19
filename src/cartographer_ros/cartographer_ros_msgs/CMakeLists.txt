@@ -51,6 +51,7 @@ add_service_files(
     SubmapQuery.srv
     TrajectoryQuery.srv
     WriteState.srv
+    RelocalizationService.srv    
 )
 
 generate_messages(

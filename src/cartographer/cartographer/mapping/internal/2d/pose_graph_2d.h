@@ -49,6 +49,8 @@
 #include "cartographer/transform/rigid_transform.h"
 #include "cartographer/transform/transform.h"
 
+#include "absl/synchronization/blocking_counter.h"
+
 namespace cartographer {
 namespace mapping {
 
@@ -82,6 +84,10 @@ class PoseGraph2D : public PoseGraph {
       int trajectory_id,
       const std::vector<std::shared_ptr<const Submap2D>>& insertion_submaps)
       LOCKS_EXCLUDED(mutex_);
+
+bool PerformGlobalLocalization(
+        float cutoff, const cartographer::sensor::PointCloud& point_cloud,
+        transform::Rigid2d* best_pose_estimate, float* best_score) ;
 
   void AddImuData(int trajectory_id, const sensor::ImuData& imu_data) override
       LOCKS_EXCLUDED(mutex_);

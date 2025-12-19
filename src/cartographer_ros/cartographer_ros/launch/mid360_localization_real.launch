@@ -17,7 +17,7 @@
   <node name="cartographer_node" pkg="cartographer_ros" type="cartographer_node" 
     args="-configuration_directory $(find cartographer_ros)/configuration_files
           -configuration_basename mid360_localization_nanjing.lua
-          -load_state_filename /home/nvidia/wjd/testmaps/carto_map.pbstream"
+          -load_state_filename /home/nvidia/wjd/testmaps3/map.pbstream"
     output="screen">
 
     <remap from="scan" to="front_scan" />
@@ -47,7 +47,7 @@
     type="cartographer_occupancy_grid_node" args="-resolution 0.1 -pure_localization 1"/>
     
   <node name="map_server" pkg="map_server" type="map_server"
-    args="/home/nvidia/wjd/testmaps/carto_map.yaml" />
+    args="/home/nvidia/wjd/testmaps3/map.yaml" />
 
   <node name="rviz" pkg="rviz" type="rviz" required="true"
       args="-d $(find cartographer_ros)/configuration_files/demo_2d.rviz" />

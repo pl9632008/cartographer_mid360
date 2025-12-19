@@ -258,6 +258,97 @@ void PoseGraph2D::AddLandmarkData(int trajectory_id,
   });
 }
 
+bool PoseGraph2D::PerformGlobalLocalization(
+        float cutoff, const cartographer::sensor::PointCloud& point_cloud,
+        transform::Rigid2d* best_pose_estimate, float* best_score) {
+
+
+auto pool = std::make_unique<common::ThreadPool>(
+    std::thread::hardware_concurrency());
+assert(pool != nullptr);
+
+
+const sensor::PointCloud filtered_point_cloud = sensor::VoxelFilter(point_cloud, 0.05f);
+
+
+int32_t submap_size = static_cast<int>(data_.submap_data.size());
+absl::BlockingCounter created_counter{submap_size};
+std::vector<std::shared_ptr<scan_matching::FastCorrelativeScanMatcher2D>> matchers;
+std::vector<const cartographer::mapping::Grid2D*> submaps;
+matchers.resize(submap_size);
+submaps.resize(submap_size);
+
+size_t index = 0;
+for (const auto& submap_id_data : data_.submap_data) {
+    if (submap_id_data.id.trajectory_id != 0) {
+        continue;
+    }
+    auto task = std::make_unique<common::Task>();
+    task->SetWorkItem([this, &matchers, &created_counter, index, submap_id = submap_id_data.id, &submaps] {
+        submaps.at(index) = static_cast<const Submap2D*>(data_.submap_data.at(submap_id).submap.get())->grid();
+        matchers.at(index) =  std::make_unique<scan_matching::FastCorrelativeScanMatcher2D>(
+            *(submaps.at(index)),
+            options_.constraint_builder_options().fast_correlative_scan_matcher_options());
+        created_counter.DecrementCount();
+    });
+    pool->Schedule(std::move(task));
+    index++;
+}
+created_counter.Wait();
+
+
+// 存储所有匹配分数和结果
+std::vector<float> score_set;
+std::vector<transform::Rigid2d> pose_set;
+score_set.resize(submap_size);
+pose_set.resize(submap_size);
+absl::BlockingCounter matched_counter{submap_size};
+std::atomic_bool has_matched{false};
+
+for (size_t i = 0; i < matchers.size(); i++) {
+    // 循环创建任务放入线程池
+    auto task = std::make_unique<common::Task>();
+    task->SetWorkItem([i, &filtered_point_cloud, &matchers, &score_set, &pose_set, cutoff, &matched_counter, &has_matched] {
+        float score = -1;
+        transform::Rigid2d pose_estimate;
+        if (matchers[i]->MatchFullSubmap(filtered_point_cloud, cutoff, &score, &pose_estimate)) {
+            score_set.at(i) = score;
+            pose_set.at(i) = pose_estimate;
+            has_matched = true;
+        }
+        matched_counter.DecrementCount();
+    });
+    pool->Schedule(std::move(task));
+}
+matched_counter.Wait();
+if (!has_matched)
+{
+    return has_matched;
+}
+
+// 遍历结果，找出分数最高的位姿
+int max_position = max_element(score_set.begin(), score_set.end()) - score_set.begin();
+*best_score = score_set[max_position];
+*best_pose_estimate = pose_set[max_position];
+
+
+auto csm = std::make_unique<scan_matching::CeresScanMatcher2D>(
+    options_.constraint_builder_options().ceres_scan_matcher_options());
+ceres::Solver::Summary unused_summary;
+csm->Match(best_pose_estimate->translation(), *best_pose_estimate,
+           filtered_point_cloud, *(submaps.at(max_position)),
+           best_pose_estimate, &unused_summary);
+
+return has_matched;
+
+
+
+
+
+
+}
+
+
 void PoseGraph2D::ComputeConstraint(const NodeId& node_id,
                                     const SubmapId& submap_id) {
   bool maybe_add_local_constraint = false;

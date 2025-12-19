@@ -58,6 +58,11 @@ class PoseGraph : public PoseGraphInterface {
   PoseGraph(const PoseGraph&) = delete;
   PoseGraph& operator=(const PoseGraph&) = delete;
 
+
+//    virtual bool PerformGlobalLocalization(
+//         float cutoff, const cartographer::sensor::PointCloud& point_cloud,
+//         transform::Rigid2d* best_pose_estimate, float* best_score)  {};
+
   // Inserts an IMU measurement.
   virtual void AddImuData(int trajectory_id,
                           const sensor::ImuData& imu_data) = 0;
