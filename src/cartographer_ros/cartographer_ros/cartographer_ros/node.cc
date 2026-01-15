@@ -339,42 +339,12 @@ void Node::PublishLocalTrajectoryData(const ::ros::TimerEvent& timer_event) {
         tracked_pose_publisher_.publish(pose_msg);
 
 
-          /*------------------------------*/
-        if(init_flag == true){
-
-            current_time = pose_msg.header.stamp;
-            double current_x = pose_msg.pose.position.x;
-            double current_y = pose_msg.pose.position.y;
-            double current_yaw = tf::getYaw(pose_msg.pose.orientation);
-            double dt = (current_time - last_time).toSec();
-            double dx = current_x - last_x;
-            double dy = current_y - last_y;
-            double d_yaw = current_yaw - last_yaw;
-
-            double lin_speed_x = dx/dt;
-            double lin_speed_y = dy/dt;
-
-
-            double ang_speed = d_yaw/dt;
-            ::nav_msgs::Odometry msg;
-            msg.header.stamp = pose_msg.header.stamp;
-            msg.header.frame_id = "map";
-            msg.child_frame_id = "base_link";
-            msg.pose.pose.position = pose_msg.pose.position;
-            msg.pose.pose.orientation = pose_msg.pose.orientation;
-            // msg.twist.twist.linear.x = lin_speed_x;
-            // msg.twist.twist.linear.y = lin_speed_y;
-            // msg.twist.twist.angular.z = ang_speed;
-            carto_pub_.publish(msg);
-
-        }
-
-        
-        last_time = pose_msg.header.stamp;
-        double last_x = pose_msg.pose.position.x;
-        double last_y = pose_msg.pose.position.y;
-        double last_yaw = tf::getYaw(pose_msg.pose.orientation);
-        init_flag = true;
+        ::nav_msgs::Odometry msg;
+        msg.header.stamp = pose_msg.header.stamp;
+        msg.header.frame_id = node_options_.map_frame;
+        msg.child_frame_id = trajectory_data.trajectory_options.published_frame;
+        msg.pose.pose = pose_msg.pose;
+        carto_pub_.publish(msg);
 
         /*------------------------------*/
 

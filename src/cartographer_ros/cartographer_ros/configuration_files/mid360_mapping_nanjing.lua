@@ -8,7 +8,7 @@ options = {
   tracking_frame = "base_link",             -- 将所有传感器数据转换到这个坐标系下 有imu_link就用imu_link
   published_frame = "base_link",            -- tf: map -> base_link
   odom_frame = "odom",                      -- 里程计的坐标系名字
-  provide_odom_frame = true,                -- 是否提供odom的tf, 如果为true, 则tf树为map->odom->base_link
+  provide_odom_frame = false,                -- 是否提供odom的tf, 如果为true, 则tf树为map->odom->base_link
                                             -- 如果为false tf树为map->base_link
   publish_frame_projected_to_2d = false,    -- 是否将坐标系投影到平面上
   use_pose_extrapolator = false,            -- 发布tf时是使用pose_extrapolator的位姿还是前端计算出来的位姿
