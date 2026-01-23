@@ -144,4 +144,21 @@
 
 
 
+  <link name="wit_imu_link">
+    <visual>
+      <origin xyz="0.0 0.0 0.0" />
+      <geometry>
+        <box size="0.06 0.04 0.02" />
+      </geometry>
+      <material name="orange" />
+    </visual>
+  </link>
+
+  <joint name="wit_imu_link_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="wit_imu_link" />
+    <origin xyz="0 0 0.71325" rpy="0 0 0" />
+  </joint>
+
+
 </robot>

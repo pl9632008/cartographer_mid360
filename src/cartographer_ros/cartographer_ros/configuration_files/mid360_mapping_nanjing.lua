@@ -5,7 +5,7 @@ options = {
   map_builder = MAP_BUILDER,                -- map_builder.lua的配置信息
   trajectory_builder = TRAJECTORY_BUILDER,  -- trajectory_builder.lua的配置信息
   map_frame = "map",                        -- 地图坐标系的名字
-  tracking_frame = "base_link",             -- 将所有传感器数据转换到这个坐标系下 有imu_link就用imu_link
+  tracking_frame = "wit_imu_link",             -- 将所有传感器数据转换到这个坐标系下 有imu_link就用imu_link
   published_frame = "base_link",            -- tf: map -> base_link
   odom_frame = "odom",                      -- 里程计的坐标系名字
   provide_odom_frame = false,                -- 是否提供odom的tf, 如果为true, 则tf树为map->odom->base_link
@@ -36,12 +36,15 @@ options = {
 MAP_BUILDER.num_background_threads = 8
 MAP_BUILDER.use_trajectory_builder_2d = true
 
-TRAJECTORY_BUILDER_2D.use_imu_data = false
+TRAJECTORY_BUILDER_2D.use_imu_data = true
 TRAJECTORY_BUILDER_2D.min_range = 0.1  
 TRAJECTORY_BUILDER_2D.max_range = 25
 
 -- 以tracking_frame为坐标系
-TRAJECTORY_BUILDER_2D.min_z = -0.5
+-- TRAJECTORY_BUILDER_2D.min_z = -0.5
+-- TRAJECTORY_BUILDER_2D.max_z = 0.5
+
+TRAJECTORY_BUILDER_2D.min_z = -0.9
 TRAJECTORY_BUILDER_2D.max_z = 0.5
 
 

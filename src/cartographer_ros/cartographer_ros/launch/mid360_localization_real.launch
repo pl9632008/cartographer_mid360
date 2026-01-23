@@ -2,7 +2,8 @@
 
   <param name="/use_sim_time" value="false" /> <!-- true: offline (rosbag); false: online -->
 
-  
+    <include file="$(find wit_ros_imu)/launch/rviz_and_imu_no_rviz.launch"/>
+
   <include file="$(find livox_ros_driver2)/launch_ROS1/no_rviz_MID3602.launch"/>
 
   <include file="$(find cleaning_robot)/launch/pub_merged_points.launch"/>
@@ -17,13 +18,13 @@
   <node name="cartographer_node" pkg="cartographer_ros" type="cartographer_node" 
     args="-configuration_directory $(find cartographer_ros)/configuration_files
           -configuration_basename mid360_localization_nanjing.lua
-          -load_state_filename /home/nvidia/wjd/testmaps3/map.pbstream"
+          -load_state_filename /home/nvidia/wjd/testmaps5/map.pbstream"
     output="screen">
 
     <remap from="scan" to="front_scan" />
     <remap from="odom" to="odometry/filtered_test" />
     <remap from="points2" to="points_calibrated"/>
-    <remap from="imu" to="imu_standard_153" />
+    <remap from="imu" to="imu/data" />
 
   </node>
 
@@ -32,7 +33,7 @@
     1：设置参数服务器参数作为导航的零点
     2：rviz设置初始位置作为导航的零点(本质是接收/initialpose这个topic，所以gnss初始定位也用2)
 -->
-  <param name="/use_localization" type="int" value = "0"/>
+  <param name="/use_localization" type="int" value = "2"/>
   <param name="/set_inital_pose_x" type="double" value = "-36.02"/>
   <param name="/set_inital_pose_y" type="double" value = "-54.57"/>
   <param name="/set_inital_pose_z" type="double" value = "0.0"/>
@@ -47,7 +48,7 @@
     type="cartographer_occupancy_grid_node" args="-resolution 0.1 -pure_localization 1"/>
     
   <node name="map_server" pkg="map_server" type="map_server"
-    args="/home/nvidia/wjd/testmaps3/map.yaml" />
+    args="/home/nvidia/wjd/testmaps5/map.yaml" />
 
   <node name="rviz" pkg="rviz" type="rviz" required="true"
       args="-d $(find cartographer_ros)/configuration_files/demo_2d.rviz" />

@@ -3,6 +3,7 @@
   <param name="/use_sim_time" value="false" /> <!-- true: offline (rosbag); false: online -->
   <param name="robot_description" textfile="$(find cartographer_ros)/urdf/mid360_nanjing.urdf" />
   
+  <include file="$(find wit_ros_imu)/launch/rviz_and_imu_no_rviz.launch"/>
 
   <include file="$(find livox_ros_driver2)/launch_ROS1/no_rviz_MID3602.launch"/>
 
@@ -21,7 +22,7 @@
     <remap from="scan" to="front_scan" />
     <remap from="odom" to="odometry/filtered_test" />
     <remap from="points2" to="points_calibrated"/>
-    <remap from="imu" to="imu_standard_153" />
+    <remap from="imu" to="imu/data" />
 
   </node>
 
